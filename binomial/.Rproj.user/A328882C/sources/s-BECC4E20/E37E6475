@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1556343486900.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "942573971",
+    "id" : "E37E6475",
+    "lastKnownWriteTime" : 1556332918,
+    "last_content_update" : 1556332918,
+    "path" : "~/Desktop/linear_modeling/lab/lab12/lab12-supplement.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "156,0",
+        "scrollLine" : "144"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

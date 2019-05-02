@@ -1,0 +1,62 @@
+---
+title: "lab12_153"
+author: "kejun zhou"
+date: "4/26/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(forecast)
+library(astsa)
+library(MASS)
+load("/Users/a123/Desktop/time series/lab12/login_times.RData")
+data=login_times_by_hour
+attach(data)
+plot(data$count,type="l")
+period=periodogram(count)
+
+index_max=which.max(period$spec)
+index_max
+fractions(period$freq[index_max])
+
+acf(count)
+diff24=diff(count,lag = 24)
+plot(diff24,type = "l")
+acf(diff24)
+
+#diff24_2=diff(diff())
+period=periodogram(diff24)
+
+diff24_2=diff(diff(diff(diff24)))
+
+
+
+
+acf2(diff24)
+auto.arima(diff24)
+sarima(diff24,p=1,d=0,q=1,P=0,Q=0,D=1,S=24)
+
+
+#data visualization
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+

@@ -1,0 +1,40 @@
+# Hello, world!
+#
+# This is an example function named 'hello'
+# which prints 'Hello, world!'.
+#
+# You can learn more about package authoring with RStudio at:
+#
+#   http://r-pkgs.had.co.nz/
+#
+# Some useful keyboard shortcuts for package authoring:
+#
+#   Install Package:           'Cmd + Shift + B'
+#   Check Package:             'Cmd + Shift + E'
+#   Test Package:              'Cmd + Shift + T'
+
+library(ggplot2)
+#this function is about testing whether the input probability is valid or not. If it is invalid, stop the function and give the error message.
+check_prob=function(prob){
+  if (prob<=1 & prob>0) return(TRUE)
+  else stop("invalid prob value")
+}
+
+#this function is about testing whether the trials are valid or not. If it is invalid, stop the function and give the error message
+check_trials=function(trials){
+  if (trials%%1==0 & trials>=0){
+    return (TRUE)
+  }
+  else stop("invalid trials value")
+}
+
+#this function is about testing whether the success are valid or not. If it is invalid which means it is greater than trials or is not integer, stop the function and give the error message
+check_success=function(success,trials){
+  for (i in (1:length(success))){
+    if (success[i]>trials) stop("success cannot be greater than trials")
+  }
+  if(is.vector(success)==FALSE) stop("invalid success value")
+  else return (TRUE)
+
+}
+

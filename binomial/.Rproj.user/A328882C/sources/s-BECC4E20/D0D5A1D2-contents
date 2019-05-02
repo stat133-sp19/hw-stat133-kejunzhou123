@@ -1,0 +1,80 @@
+---
+title: "getting started with binomial"
+author: "kejun zhou"
+date: "4/29/2019"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{getting started with binomial}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(collapse = T, comment = "#>")
+library(binomial)
+```
+
+## calculating binomial probabilities
+The package `"binomial"` is about calculating the probabilities of the given binomial, getting summary of this binomial and get the visualization the related probabilities and the cumulative probabilities.
+
+## get the number of combinations
+The first step is to get the total combination number when you input two values. The first argument is n and the second argument is k. k can be a sequence.  
+```{r}
+bin_choose(5, 1:3)
+
+```
+## get the probability
+You can get the probability by input three arguments. The first is success and the second is trails and the third is prob. The output will be the probability.
+```{r}
+
+s=bin_probability(5,trials = 10, prob = 0.5)
+s
+
+```
+
+## get the distribution
+You can get the probablity according to different success time. The output is a dataframe with two classes `"bindis"` and `"data.frame"`  
+The `plot()` function give you the barplot using the data frame
+```{r}
+library(ggplot2)
+b=bin_distribution(trials = 5, prob = 0.5)
+b
+plot(b)
+
+```
+## get the cumulative 
+you can get the cumulative probabilities. the output will be a dataframe with two classes "bincum" and "data.frame"
+
+the `plot()` function will give you the cumulative probability's plot  
+```{r}
+#library(ggplot2)
+a=bin_cumulative(trials = 5, prob = 0.5)
+a
+plot(a)
+```
+## get the variable
+You can input the trials and the probability to check whether it is valid and it will return a class named "binvar"
+
+the `print()` function will give you the content of the object
+```{r}
+bin1 <- bin_variable(trials = 10, p = 0.3)
+bin1
+```
+the `summary()` function will give you the full summary description of the object and the `print.summary()` function will give a nicely contents of the summary output
+```{r}
+bin1 <- bin_variable(trials = 10, p = 0.3)
+binsum1 <- summary(bin1)
+binsum1
+```
+## functions of measures
+You can use different functions to get the mean, variance,mode,skewness and kurtosis.
+
+```{r}
+bin_mean(10, 0.3)
+bin_variance(10, 0.3)
+bin_mode(10, 0.3)
+bin_skewness(10, 0.3)
+bin_kurtosis(10, 0.3)
+```
+
+

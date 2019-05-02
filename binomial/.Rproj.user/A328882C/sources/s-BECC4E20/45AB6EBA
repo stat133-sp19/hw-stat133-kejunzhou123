@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1556333542176.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2120855529",
+    "id" : "45AB6EBA",
+    "lastKnownWriteTime" : 1556470802,
+    "last_content_update" : 1556470802889,
+    "path" : "~/Desktop/computing with data/workout3/binomial/tests/testthat/test-checker.R",
+    "project_path" : "tests/testthat/test-checker.R",
+    "properties" : {
+        "cursorPosition" : "3,0",
+        "scrollLine" : "1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 16,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
