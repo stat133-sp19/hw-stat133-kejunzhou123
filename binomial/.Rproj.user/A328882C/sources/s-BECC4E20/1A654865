@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1556659950966.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1A654865",
+    "lastKnownWriteTime" : 1556832282,
+    "last_content_update" : 1556832282992,
+    "path" : "~/Desktop/computing with data/workout3/binomial/R/binomial.R",
+    "project_path" : "R/binomial.R",
+    "properties" : {
+        "cursorPosition" : "219,12",
+        "scrollLine" : "211",
+        "tempName" : "Untitled3"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

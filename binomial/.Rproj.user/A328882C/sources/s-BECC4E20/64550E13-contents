@@ -1,0 +1,80 @@
+---
+title: "lab11"
+author: "kejun zhou"
+date: "4/18/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(stringr)
+library(dplyr)
+library(ggplot2)
+data=read.csv("https://raw.githubusercontent.com/ucb-stat133/stat133-labs/master/data/text-emotion.csv",header=TRUE,sep=",")
+
+count=c()
+count=str_length(data$content)
+summary(count)
+hist(count,breaks = seq(0,170,5),xlim=c(0,170))
+
+which(count==0)
+which(count==1)
+data$content[count==1]
+#No, no tweets with 0 characters
+#4 tweets with 1
+#the index are 341 15029 29870 39416
+#0 content
+
+which.max(count)
+max(count)
+data$content[which.max(count)]
+#34099 index
+#167
+#34099 &quot;I'll see you again yeah?&quot; &quot;Its up to you&quot; &quot;I guarantee you will, i dont want to wait to long not seeing you&quot; fuckin fruit basket! Hahaha
+
+
+name=str_length(data$author)
+which(name>15)
+str_which(data$author,"\\W")
+
+#4040-10-01
+min(name)
+which(name==2)
+data$author[which(name==2)]
+#min 2
+#kk xz zl zl ms c5
+
+symbol=grep("\\^",data$content)
+length(symbol)
+
+symbol2=grep("\\$",data$content)
+length(symbol2)
+
+symbol3=grep("^a|A",data$content)
+length(symbol3)
+data[symbol3[1:10],]
+
+#symbol4=grep("!",data$content)
+symbol4=str_count(data$content,"!")
+summary(symbol4)
+which.max(symbol4)
+data[4502,]$content
+
+#
+#13 category
+senti=summary(data$sentiment)
+dataframe=data.frame(freq=as.vector(senti)/length(data$sentiment),name=names(senti))
+ggplot(dataframe,aes(x=reorder(name,freq),y=freq))+
+  geom_bar(stat="identity")+coord_flip()+labs(title="freq")
+
+#names(sentiment) <- names("anger","boredom","")
+data_new=cbind(data,count)
+summarise(group_by(data_new,sentiment),mean(count))
+
+
+```
+

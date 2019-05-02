@@ -1,0 +1,1 @@
+{"frames":[{"character_number":0,"end_character_number":0,"end_line_number":0,"file":"","func":"summary(glm3)","line_number":0}],"message":"Error in summary(glm3) : object 'glm3' not found\n"}

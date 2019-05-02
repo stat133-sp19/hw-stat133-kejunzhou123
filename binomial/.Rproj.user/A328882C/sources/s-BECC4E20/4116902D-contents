@@ -1,0 +1,157 @@
+---
+title: "lab12-kejun-zhou"
+author: "kejun zhou"
+date: "4/24/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+setwd("/Users/a123/Desktop/computing with data/lab12")
+library(XML)
+library(xml2)
+library(rvest)
+library(magrittr)
+basket <- "https://www.basketball-reference.com"
+gsw <- "/teams/GSW/2017.html"
+gsw_url <- paste0(basket, gsw)
+# download HTML file to your working directory
+download.file(gsw_url, 'gsw-roster-2017.html')
+
+# Read GSW Roster html table
+gsw_roster <- readHTMLTable('gsw-roster-2017.html')
+gsw_roster
+
+basket <- "https://www.basketball-reference.com"
+bos <- "/teams/BOS/2017.html"
+bos_url <- paste0(basket, bos)
+
+# download HTML file to your working directory
+download.file(bos_url, 'bos-roster-2017.html')
+
+# Read BOS Roster html table
+bos_roster <- readHTMLTable('bos-roster-2017.html')
+
+nba_html <- paste0(basket, "/leagues/NBA_2017.html")
+
+xml_doc <- read_html(nba_html)
+xml_text <- xml_doc %>% html_text()
+
+xml_doc %>%
+  html_nodes("h2") %>%
+  html_text() 
+
+xml_doc %>%
+  html_nodes("h1") %>%
+  html_text() 
+
+xml_doc %>%
+  html_nodes("strong") %>%
+  html_text() 
+
+xml_doc %>%
+  html_nodes("button") %>%
+  html_text() 
+
+xml_doc %>%
+  html_nodes("p.listhead") %>%
+  html_text()
+
+xml_doc %>%
+  html_nodes(xpath = '//p[@class="listhead"]') %>%
+  html_text()
+
+xml_doc %>%
+  html_nodes(xpath = '//ul[@class=""]/li/a') %>%
+  html_text()
+
+xml_table1 <- xml_doc %>%
+  html_nodes("table") %>%
+  extract(1)
+
+class(xml_table1)
+tbl1 <- html_table(xml_table1)
+head(tbl1)
+
+xml_tables <- xml_doc %>%
+  html_nodes("table") %>%
+  extract(1:2)
+
+xml_tables %>% 
+  html_nodes("a") %>%
+  html_text()
+
+hrefs=c()
+hrefs=xml_tables %>% 
+  html_nodes("a") %>%
+  html_attr("href")
+hrefs
+teams=substr(hrefs,8,10)
+teams
+files=paste0(teams,"-roster-2017.csv")
+files
+
+basket <- "https://www.basketball-reference.com"
+gsw <- hrefs[1]
+team_url <- paste0(basket, gsw)
+download.file(team_url, 'bos-roster-2017.html')
+xml_doc1 <- read_html(team_url)
+xml_text1 <- xml_doc %>% html_text()
+
+# Read bos Roster html table
+bos_roster <- readHTMLTable('bos-roster-2017.html')
+bos_roster
+
+xml_table1 <- xml_doc1 %>%
+  html_nodes("table") %>%
+  extract(1)
+
+roster <- html_table(xml_table1)
+head(roster)
+
+write.csv(roster,"BOS-roster-2017.csv")
+
+for (i in 1:length(hrefs)){
+basket <- "https://www.basketball-reference.com"
+gsw <- hrefs[i]
+team_url <- paste0(basket, gsw)
+#download.file(team_url, paste0(teams[i],'-roster-2017.html'))
+xml_doc1 <- read_html(team_url)
+xml_text1 <- xml_doc %>% html_text()
+
+# Read bos Roster html table
+roster <- readHTMLTable(paste0(teams[i],'-roster-2017.html'))
+xml_table1 <- xml_doc1 %>%
+  html_nodes("table") %>%
+  extract(1)
+roster <- html_table(xml_table1)
+write.csv(roster,paste0(teams[i],"-roster-2017.csv"))
+}
+```
+
+## challenge
+```{r}
+
+my_data <- NULL
+my_file=paste0(teams,"-roster-2017.csv")
+i=1
+n=c()
+for (file in my_file) { # for every file...
+  # clean it with clean_nyt()
+    #temp$id <- sub("-roster-2017.csv", "", file) # add an id column (but remove .csv
+    file=read.csv(file,sep=",", header=TRUE)
+    n[i]=nrow(file)
+    my_data <- rbind(my_data, file) # then stick together by rows
+    i=i+1
+}
+my_data=cbind(rep(teams,n),my_data)
+#my_data %>% glimpse()
+
+write.csv(my_data,"nba-rosters-2017.csv")
+
+```
+

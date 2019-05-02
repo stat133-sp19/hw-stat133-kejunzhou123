@@ -1,0 +1,11 @@
+context("test trials")
+library(binomial)
+source("/Users/a123/Desktop/computing with data/workout3/binomial/R/check_trials.R")
+test_that("test trials", {
+  x=10
+  expect_length(check_trials(x), 1)
+  expect_equal(check_trials(x), TRUE)
+  expect_type(check_trials(x),'logical')
+})
+
+
