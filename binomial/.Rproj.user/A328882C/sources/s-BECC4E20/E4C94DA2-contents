@@ -9,3 +9,4 @@ test_that("test checkers", {
   expect_type(check_prob(x), 'logical')
 })
 
+

@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3856078179",
+    "hash" : "0",
     "id" : "CB9B7BF4",
     "lastKnownWriteTime" : 1556756220,
     "last_content_update" : 1556756220429,
     "path" : "~/Desktop/computing with data/workout3/binomial/vignettes/introduction.Rmd",
     "project_path" : "vignettes/introduction.Rmd",
     "properties" : {
-        "cursorPosition" : "72,0",
-        "scrollLine" : "64"
+        "cursorPosition" : "26,0",
+        "scrollLine" : "20"
     },
     "read_only" : false,
     "read_only_alternatives" : [

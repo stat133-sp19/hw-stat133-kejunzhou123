@@ -155,7 +155,7 @@ plot(dis2)
 #' @param trials trial numbers
 #' @param prob success probability
 #' @return a list containing trials and probability
-#' @export
+#' @export bin_variable
 #' @examples
 #' bin1 <- bin_variable(trials = 10, p = 0.3)
 #' binsum1 <- summary(bin1)
@@ -165,32 +165,37 @@ bin_variable=function(trials,prob){
   check_prob(prob)
   check_trials(trials)
   value=list(prob=prob,trials=trials)
-  class(value)=c("binvar")
-  value
+  class(value)="binvar"
+  return(value)
+  # value
 }
 
-#' @export
-print<- function (x) {
-  UseMethod("print", x)
-}
+#' @export print.binvar
+# print<- function (x) {
+#   UseMethod("print", x)
+# }
 print.binvar=function(x){
-  cat(sprintf('"Binomial variable"'),"\n")
+  cat('"Binomial variable"',"\n")
   cat('\n')
   cat("Paramaters",'\n')
   cat(" - number of trials:",x$trials,"\n")
-  cat(" - prob of success:",x$prob)
+  cat(" - prob of success:",x$prob,'\n')
   invisible(x)
 }
 
 
 #' @export
-summary<- function (x) {
-  UseMethod("summary", x)
-}
+# summary<- function (x) {
+#   UseMethod("summary", x)
+# }
 summary.binvar=function(x){
-  obj=list(mean=aux_mean(x$trials,x$prob),variance=aux_variance(x$trials,x$prob),mode=aux_mode(x$trials,x$prob),skewness=aux_skewness(x$trials,x$prob),kurtosis=aux_kurtosis(x$trials,x$prob))
+  obj=list(mean=aux_mean(x$trials,x$prob),
+           variance=aux_variance(x$trials,x$prob),
+           mode=aux_mode(x$trials,x$prob),
+           skewness=aux_skewness(x$trials,x$prob),
+           kurtosis=aux_kurtosis(x$trials,x$prob))
   class(obj)="summary.binvar"
-  obj
+  return(obj)
   #invisible(x)
 }
 
@@ -206,8 +211,8 @@ print.summary.binvar=function(x){
   cat("- variance:",x$variance,'\n')
   cat("- mode:",x$mode,'\n')
   cat("- skewness:",x$skewness,'\n')
-  cat("- kurtosis:",x$kurtosis)
-  invisible(x)
+  cat("- kurtosis:",x$kurtosis,'\n')
+  #invisible(x)
 }
 
 
