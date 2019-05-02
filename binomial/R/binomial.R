@@ -167,7 +167,7 @@ bin_variable=function(trials,prob){
   # value
 }
 
-#' @export print.binvar
+#' @export
 # print<- function (x) {
 #   UseMethod("print", x)
 # }
@@ -182,9 +182,7 @@ print.binvar=function(x){
 
 
 #' @export
-# summary<- function (x) {
-#   UseMethod("summary", x)
-# }
+
 summary.binvar=function(x){
   obj=list(mean=aux_mean(x$trials,x$prob),
            variance=aux_variance(x$trials,x$prob),

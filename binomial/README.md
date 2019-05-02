@@ -6,10 +6,17 @@ probability given trials, success time and provides the functions to get
 summary measures like mean, variance, etc. It also generates some plots
 to show the probability and cumulative probability.
 
+  - `bin_choose` get the number of combinations
+  - `bin_probability` method to get the probability
+  - `bin_distribution` method to get the distribution of binomial
+  - `bin_cumulative` method for get the cumulative probabilities
+  - `bin_variable` check whether it is valid and it will return a class
+  - `bin_mean` `bin_variance` `bin_mode` `bin_skewness` `bin_kurtosis`
+    You can use different functions to get the mean,
+    variance,mode,skewness and kurtosis.
   - `plot()` method plot probablity of each success and cumulative
     probablities.
-  - `summary()` method for get the summary of the parameters and
-    measures
+  - `summary()` method to get the summary of the parameters and measures
 
 # Usage
 
@@ -88,20 +95,4 @@ bin_skewness(10, 0.3)
 #> [1] 0.2760262
 bin_kurtosis(10, 0.3)
 #> [1] -0.1238095
-```
-
-``` r
-summary(bin_variable(trials = 10, p = 0.3))
-#> "Summary Binomial" 
-#>  
-#> Paramaters 
-#> - number of trials: 
-#> - prob of success: 
-#>  
-#> Measures 
-#> - mean: 3 
-#> - variance: 2.1 
-#> - mode: 3 
-#> - skewness: 0.2760262 
-#> - kurtosis: -0.1238095
 ```

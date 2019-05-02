@@ -2,6 +2,7 @@
 
 S3method(plot,bincum)
 S3method(plot,bindis)
+S3method(print,binvar)
 S3method(print,summary.binvar)
 S3method(summary,binvar)
 export(bin_choose)
@@ -14,4 +15,3 @@ export(bin_probability)
 export(bin_skewness)
 export(bin_variable)
 export(bin_variance)
-export(print.binvar)
