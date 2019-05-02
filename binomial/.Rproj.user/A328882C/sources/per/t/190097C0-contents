@@ -1,6 +1,0 @@
-check_trials=function(trials){
-  if (trials%%1==0 & trials>=0){
-    return (TRUE)
-  }
-  else stop("invalid trials value")
-}

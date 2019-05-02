@@ -1,4 +1,0 @@
-"0","b=bin_distribution(trials = 5, prob = 0.5)
-b
-"
-"0","plot(b)"

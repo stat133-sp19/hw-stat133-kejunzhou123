@@ -1,4 +1,0 @@
-"0","a=bin_cumulative(trials = 5, prob = 0.5)
-a
-"
-"0","plot(a)"
