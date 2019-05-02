@@ -100,20 +100,17 @@ bin_distribution=function(trials,prob){
 
 
 #' @export
-plot <- function (x) {
-  UseMethod("plot", x)
-}
-
 plot.bindis=function(obj){
-  # ggplot(obj,aes(x=success,y=probability))+
-  vec <- obj[,2]
-  names(vec) <- obj[,1]
-  barplot(vec, xlab = "successes", ylab = "probability", las = 1)
-  #   geom_bar(stat="identity")+labs(title="frequencey")+scale_x_continuous(breaks=seq(0,5,1))
+  library(ggplot2)
+  ggplot(obj,aes(x=success,y=probability))+
+  geom_bar(stat="identity")+labs(title="frequencey")+scale_x_continuous(breaks=seq(0,5,1))
+#   vec <- obj[,2]
+#   names(vec) <- obj[,1]
+#   barplot(vec, xlab = "successes", ylab = "probability", las = 1)
 }
 
-
-
+bin=bin_distribution(trials = 5, prob = 0.5)
+plot(bin)
 #' @title bin_cumulative
 #' @description get cumulative distribution of a n trials experiment
 #' @param trials trial numbers

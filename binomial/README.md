@@ -15,11 +15,6 @@ to show the probability and cumulative probability.
 
 ``` r
 library(binomial)
-#> 
-#> Attaching package: 'binomial'
-#> The following object is masked from 'package:graphics':
-#> 
-#>     plot
 # get the total combination number
 bin_choose(5, 1:3)
 #> [1]  5 10 10
@@ -37,6 +32,12 @@ bin_distribution(trials = 5, prob = 0.5)
 #> 5       4     0.15625
 #> 6       5     0.03125
 plot(bin_distribution(trials = 5, prob = 0.5))
+#> Warning: package 'ggplot2' was built under R version 3.4.4
+```
+
+![](README-unnamed-chunk-2-1.png)<!-- -->
+
+``` r
 
 # get the cumulative probabilities
 bin_cumulative(trials = 5, prob = 0.5)
@@ -48,10 +49,9 @@ bin_cumulative(trials = 5, prob = 0.5)
 #> 5       4     0.15625    0.96875
 #> 6       5     0.03125    1.00000
 plot(bin_cumulative(trials = 5, prob = 0.5))
-#> Warning: package 'ggplot2' was built under R version 3.4.4
 ```
 
-![](README-unnamed-chunk-2-1.png)<!-- -->![](README-unnamed-chunk-2-2.png)<!-- -->
+![](README-unnamed-chunk-2-2.png)<!-- -->
 
 ``` r
 
